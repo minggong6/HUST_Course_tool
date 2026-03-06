@@ -10,151 +10,297 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
-        header { text-align: center; color: white; margin-bottom: 30px; }
-        header h1 { font-size: 2rem; margin-bottom: 10px; }
-        header p { opacity: 0.9; margin-bottom: 15px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        header { text-align: center; color: white; margin-bottom: 20px; }
+        header h1 { font-size: 1.8rem; margin-bottom: 8px; }
+        header p { opacity: 0.9; margin-bottom: 10px; }
         .header-info {
             background: rgba(255,255,255,0.15);
             border-radius: 8px;
-            padding: 15px 20px;
-            margin-top: 15px;
+            padding: 12px 15px;
+            margin-top: 10px;
             text-align: left;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
-        .header-info h3 { margin-bottom: 8px; font-size: 1rem; }
-        .header-info ul { margin-left: 20px; }
+        .header-info h3 { margin-bottom: 6px; font-size: 0.95rem; }
+        .header-info ul { margin-left: 18px; }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 15px;
+        }
+        
+        .left-panel { display: flex; flex-direction: column; gap: 15px; }
+        .right-panel { position: sticky; top: 15px; height: fit-content; }
+        
         .card {
             background: white;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 18px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         .card h2 {
-            font-size: 1.2rem;
-            margin-bottom: 16px;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
             color: #333;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        }
+        
+        /* 上传区域 */
+        .upload-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
         .upload-box {
             border: 2px dashed #ddd;
             border-radius: 8px;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
         }
         .upload-box:hover { border-color: #667eea; background: #f8f9ff; }
         .upload-box.active { border-color: #4CAF50; background: #f0fff0; }
-        .upload-box .icon { font-size: 2.5rem; margin-bottom: 10px; }
-        .upload-box .label { font-weight: 500; color: #333; margin-bottom: 5px; }
-        .upload-box .hint { font-size: 0.85rem; color: #888; }
+        .upload-box .icon { font-size: 2rem; margin-bottom: 8px; }
+        .upload-box .label { font-weight: 500; color: #333; margin-bottom: 4px; font-size: 0.9rem; }
+        .upload-box .hint { font-size: 0.8rem; color: #888; }
         .upload-box input { display: none; }
-        .builtin-info {
-            background: #e8f5e9;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            display: flex;
+        .upload-box.compact { padding: 15px; }
+        .upload-box.compact .icon { font-size: 1.5rem; margin-bottom: 5px; }
+        .upload-box.compact .label { font-size: 0.85rem; }
+        
+        .builtin-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
+            background: #e8f5e9;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #2e7d32;
+            margin-bottom: 12px;
         }
-        .builtin-info .icon { font-size: 1.5rem; }
-        .builtin-info .text { flex: 1; }
-        .builtin-info .text strong { color: #2e7d32; }
-        .builtin-info .text small { color: #666; display: block; margin-top: 3px; }
         .toggle-link {
             color: #667eea;
             cursor: pointer;
             text-decoration: underline;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            margin-left: 10px;
         }
-        .toggle-link:hover { color: #764ba2; }
-        .optional-upload {
-            display: none;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
+        .optional-upload { display: none; margin-top: 10px; }
         .optional-upload.show { display: block; }
-        .filters { display: flex; flex-wrap: wrap; gap: 15px; align-items: center; }
-        .filter-group { display: flex; align-items: center; gap: 8px; }
-        .filter-group label { font-weight: 500; color: #555; }
+        
+        /* 筛选器 */
+        .filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .filter-group { display: flex; align-items: center; gap: 6px; }
+        .filter-group label { font-weight: 500; color: #555; font-size: 0.85rem; }
         .filter-group select {
-            padding: 8px 12px;
+            padding: 6px 10px;
             border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 0.95rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
             cursor: pointer;
         }
         .filter-group select:focus { outline: none; border-color: #667eea; }
-        .stats { display: flex; gap: 20px; flex-wrap: wrap; }
+        
+        /* 统计 */
+        .stats { display: flex; gap: 15px; flex-wrap: wrap; }
         .stat-item {
             background: #f5f5f5;
-            padding: 12px 20px;
-            border-radius: 8px;
+            padding: 10px 16px;
+            border-radius: 6px;
             text-align: center;
         }
-        .stat-item .number { font-size: 1.5rem; font-weight: 600; color: #667eea; }
-        .stat-item .text { font-size: 0.85rem; color: #666; }
-        .course-list { display: grid; gap: 12px; }
+        .stat-item .number { font-size: 1.3rem; font-weight: 600; color: #667eea; }
+        .stat-item .text { font-size: 0.75rem; color: #666; }
+        
+        /* 课程列表 */
+        .tabs { display: flex; gap: 8px; margin-bottom: 10px; }
+        .tab {
+            padding: 6px 14px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .tab.active { background: #667eea; color: white; border-color: #667eea; }
+        .course-list { display: grid; gap: 10px; max-height: 500px; overflow-y: auto; }
+        
         .course-card {
             border: 1px solid #eee;
             border-radius: 8px;
-            padding: 16px;
+            padding: 12px;
             display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 15px;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
             align-items: start;
             transition: all 0.2s;
         }
-        .course-card:hover { border-color: #667eea; box-shadow: 0 2px 10px rgba(102, 126, 234, 0.1); }
-        .course-card .favorite-btn {
-            background: none;
+        .course-card:hover { border-color: #667eea; box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1); }
+        .course-card.preselected { border-color: #FFB300; background: #fffbe6; }
+        .course-card.conflict { opacity: 0.6; }
+        
+        .course-info .name { font-weight: 600; font-size: 0.95rem; color: #333; margin-bottom: 4px; }
+        .course-info .meta { display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem; color: #666; }
+        .course-info .tag { background: #e8eaef; padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; }
+        .course-info .time-info { margin-top: 5px; font-size: 0.75rem; color: #444; }
+        .course-info .conflict-info { color: #f44336; font-size: 0.75rem; margin-top: 4px; }
+        
+        .course-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+        .course-actions { display: flex; gap: 6px; }
+        .icon-btn {
+            background: #f5f5f5;
             border: none;
-            font-size: 1.5rem;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            padding: 5px 10px;
             cursor: pointer;
-            opacity: 0.3;
             transition: all 0.2s;
         }
-        .course-card .favorite-btn:hover { opacity: 0.7; }
-        .course-card .favorite-btn.active { opacity: 1; }
-        .course-info .name { font-weight: 600; font-size: 1.1rem; color: #333; margin-bottom: 6px; }
-        .course-info .meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.85rem; color: #666; }
-        .course-info .tag { background: #e8eaef; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
-        .course-info .time-info { margin-top: 8px; font-size: 0.85rem; color: #444; }
+        .icon-btn:hover { background: #e0e0e0; }
+        .icon-btn.favorite-btn.active { background: #fff3cd; color: #f57c00; }
+        .icon-btn.preselect-btn.active { background: #FFB300; color: white; }
+        .icon-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .status-available { background: #e8f5e9; color: #2e7d32; }
+        .status-conflict { background: #ffebee; color: #c62828; }
+        .status-preselected { background: #fff8e1; color: #f57c00; }
+        
         .btn {
-            padding: 10px 24px;
+            padding: 8px 20px;
             border: none;
-            border-radius: 6px;
-            font-size: 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s;
         }
         .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 3px 12px rgba(102, 126, 234, 0.4); }
         .btn-primary:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
-        .empty-state { text-align: center; padding: 60px 20px; color: #888; }
-        .empty-state .icon { font-size: 4rem; margin-bottom: 15px; }
-        .tabs { display: flex; gap: 10px; margin-bottom: 15px; }
-        .tab {
-            padding: 8px 20px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
+
+        .help-link {
+            color: #667eea;
+            cursor: pointer;
+            font-size: 0.75rem;
+            text-decoration: underline;
+            margin-left: 4px;
+        }
+        .help-link:hover { color: #764ba2; }
+
+        /* 模态框 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal-content {
             background: white;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow: auto;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        .modal-close:hover { color: #333; }
+        .modal-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 15px; }
+        .modal-content img { max-width: 100%; height: auto; }
+
+        .empty-state { text-align: center; padding: 40px 20px; color: #888; }
+        .empty-state .icon { font-size: 3rem; margin-bottom: 10px; }
+        
+        /* 课程表 */
+        .schedule-card { padding: 15px; }
+        .schedule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .schedule-header h2 { margin: 0; }
+        .schedule-legend { display: flex; gap: 12px; font-size: 0.75rem; }
+        .legend-item { display: flex; align-items: center; gap: 4px; }
+        .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+        .legend-original { background: #667eea; }
+        .legend-preselect { background: #FFB300; }
+        
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 45px repeat(7, 1fr);
+            gap: 2px;
+            font-size: 0.7rem;
+        }
+        .schedule-cell {
+            background: #f8f9fa;
+            border-radius: 3px;
+            padding: 3px;
+            min-height: 68px;
+            position: relative;
+            overflow: hidden;
+        }
+        .schedule-cell.header { background: transparent; font-weight: 600; color: #666; text-align: center; padding: 5px; min-height: auto; }
+        .schedule-cell.time-header { background: transparent; color: #888; text-align: center; padding: 5px 2px; min-height: auto; font-size: 0.65rem; }
+        
+        .course-block {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            border-radius: 4px;
+            padding: 5px;
+            overflow: hidden;
             cursor: pointer;
             transition: all 0.2s;
         }
-        .tab.active { background: #667eea; color: white; border-color: #667eea; }
+        .course-block:hover { transform: scale(1.02); z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .course-block.original { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .course-block.preselect { background: linear-gradient(135deg, #FFB300 0%, #FF8F00 100%); color: white; }
+        .course-block .block-name { font-weight: 600; font-size: 0.8rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        /* 响应式 */
+        @media (max-width: 1100px) {
+            .main-content { grid-template-columns: 1fr; }
+            .right-panel { position: static; }
+        }
         @media (max-width: 600px) {
-            header h1 { font-size: 1.5rem; }
-            .course-card { grid-template-columns: 1fr auto; }
+            .upload-row { grid-template-columns: 1fr; }
+            .course-card { grid-template-columns: 1fr; }
+            .course-right { flex-direction: row; justify-content: space-between; align-items: center; }
             .filters { flex-direction: column; align-items: stretch; }
             .filter-group { justify-content: space-between; }
         }
@@ -164,112 +310,129 @@
     <div class="container">
         <header>
             <h1>HUST 公选课智能筛选工具</h1>
-            <p>自动检测课程时间冲突，帮你快速找到合适的公选课</p>
+            <p>自动检测课程时间冲突，预选你的公选课</p>
             <div class="header-info">
                 <h3>使用说明</h3>
                 <ul>
-                    <li><strong>步骤1：</strong>上传你的课表（ICS格式，可从 WakeUp 课程表等APP导出）</li>
-                    <li><strong>步骤2：</strong>点击"开始筛选"，系统会自动过滤掉与你课表冲突的公选课</li>
-                    <li><strong>内置数据：</strong>已内置 2025-2026学年度第二学期主校区公共选修课程名单</li>
-                    <li><strong>提示：</strong>如需使用其他学期的公选课名单，可点击"上传自定义名单"</li>
+                    <li><strong>步骤1：</strong>上传课表（ICS格式）→ 右侧显示你的课程表</li>
+                    <li><strong>步骤2：</strong>点击"开始筛选" → 查看可选公选课</li>
+                    <li><strong>步骤3：</strong>点击"预选"按钮 → 课程显示在右侧课程表</li>
+                    <li>已内置 2025-2026学年度第二学期公选课名单</li>
                 </ul>
             </div>
         </header>
 
-        <div class="card">
-            <h2>📂 上传课表</h2>
-            
-            <div class="builtin-info">
-                <span class="icon">✅</span>
-                <div class="text">
-                    <strong>已内置公选课名单</strong>
-                    <small>2025-2026学年度第二学期主校区公选课，共 988 门课程</small>
-                </div>
-                <span class="toggle-link" id="toggleUpload">上传自定义名单</span>
-            </div>
-
-            <div class="optional-upload" id="optionalUpload">
-                <div class="upload-box" id="xlsxUpload">
-                    <div class="icon">📊</div>
-                    <div class="label">上传自定义公选课名单 (XLSX)</div>
-                    <div class="hint">点击或拖拽上传</div>
-                    <input type="file" accept=".xlsx,.xls" id="xlsxInput">
-                </div>
-            </div>
-
-            <div style="margin-top: 20px;">
-                <div class="upload-box" id="icsUpload">
-                    <div class="icon">📅</div>
-                    <div class="label">上传你的课表 (ICS)</div>
-                    <div class="hint">从 WakeUp 课程表等APP导出 ICS 文件</div>
-                    <input type="file" accept=".ics" id="icsInput">
-                </div>
-            </div>
-
-            <div style="margin-top: 20px; text-align: center;">
-                <button class="btn btn-primary" id="startFilter" disabled>开始筛选</button>
-            </div>
-        </div>
-
-        <div id="resultArea" style="display: none;">
-            <div class="card">
-                <h2>📈 筛选结果</h2>
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="number" id="totalCount">0</div>
-                        <div class="text">公选课总数</div>
+        <div class="main-content">
+            <!-- 左侧面板 -->
+            <div class="left-panel">
+                <!-- 上传区 -->
+                <div class="card">
+                    <h2>📂 上传课表</h2>
+                    <div class="builtin-badge">
+                        ✅ 已内置公选课名单（988 门）
+                        <span class="toggle-link" id="toggleUpload">上传自定义名单</span>
                     </div>
-                    <div class="stat-item">
-                        <div class="number" id="availableCount" style="color: #4CAF50;">0</div>
-                        <div class="text">可选课程</div>
+                    <div class="optional-upload" id="optionalUpload">
+                        <div class="upload-box compact" id="xlsxUpload">
+                            <div class="icon">📊</div>
+                            <div class="label">上传 XLSX</div>
+                            <input type="file" accept=".xlsx,.xls" id="xlsxInput">
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <div class="number" id="conflictCount" style="color: #f44336;">0</div>
-                        <div class="text">冲突课程</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="number" id="favoriteCount" style="color: #FFB300;">0</div>
-                        <div class="text">已收藏</div>
+                    <div style="margin-top: 12px;">
+                        <div class="upload-row">
+                            <div class="upload-box compact" id="icsUpload">
+                                <div class="icon">📅</div>
+                                <div class="label">上传课表 (ICS) <span class="help-link" id="showTutorial">如何获取?</span></div>
+                                <div class="hint">从 WakeUp 等APP导出</div>
+                                <input type="file" accept=".ics" id="icsInput">
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: center;">
+                                <button class="btn btn-primary" id="startFilter" disabled>开始筛选</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="card">
-                <h2>🔍 筛选条件</h2>
-                <div class="filters">
-                    <div class="filter-group">
-                        <label>课程类别:</label>
-                        <select id="categoryFilter"><option value="">全部</option></select>
+                <!-- 结果区域 -->
+                <div id="resultArea" style="display: none;">
+                    <!-- 统计 -->
+                    <div class="card">
+                        <h2>📈 筛选结果</h2>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <div class="number" id="totalCount">0</div>
+                                <div class="text">公选课总数</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="number" id="availableCount" style="color: #4CAF50;">0</div>
+                                <div class="text">可选</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="number" id="conflictCount" style="color: #f44336;">0</div>
+                                <div class="text">冲突</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="number" id="preselectCount" style="color: #FFB300;">0</div>
+                                <div class="text">已预选</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="filter-group">
-                        <label>校区:</label>
-                        <select id="campusFilter">
-                            <option value="">全部</option>
-                            <option value="东九">东九楼</option>
-                            <option value="东十二">东十二楼</option>
-                            <option value="西十二">西十二楼</option>
-                            <option value="东十七">东十七楼</option>
-                        </select>
+
+                    <!-- 筛选器 -->
+                    <div class="card">
+                        <h2>🔍 筛选条件</h2>
+                        <div class="filters">
+                            <div class="filter-group">
+                                <label>类别:</label>
+                                <select id="categoryFilter"><option value="">全部</option></select>
+                            </div>
+                            <div class="filter-group">
+                                <label>校区:</label>
+                                <select id="campusFilter">
+                                    <option value="">全部</option>
+                                    <option value="东九">东九楼</option>
+                                    <option value="东十二">东十二楼</option>
+                                    <option value="西十二">西十二楼</option>
+                                    <option value="东十七">东十七楼</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>显示:</label>
+                                <select id="viewFilter">
+                                    <option value="available">可选课程</option>
+                                    <option value="conflict">冲突课程</option>
+                                    <option value="preselected">已预选</option>
+                                    <option value="all">全部</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="filter-group">
-                        <label>显示:</label>
-                        <select id="viewFilter">
-                            <option value="available">可选课程</option>
-                            <option value="conflict">冲突课程</option>
-                            <option value="favorite">已收藏</option>
-                            <option value="all">全部</option>
-                        </select>
+
+                    <!-- 课程列表 -->
+                    <div class="card">
+                        <div class="tabs">
+                            <button class="tab active" data-sort="default">默认</button>
+                            <button class="tab" data-sort="credit">学分</button>
+                            <button class="tab" data-sort="name">名称</button>
+                        </div>
+                        <div class="course-list" id="courseList"></div>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="tabs">
-                    <button class="tab active" data-sort="default">默认排序</button>
-                    <button class="tab" data-sort="credit">学分排序</button>
-                    <button class="tab" data-sort="name">名称排序</button>
+            <!-- 右侧课程表 -->
+            <div class="right-panel">
+                <div class="card schedule-card">
+                    <div class="schedule-header">
+                        <h2>📅 我的课表</h2>
+                        <div class="schedule-legend">
+                            <div class="legend-item"><div class="legend-dot legend-original"></div>已有课程</div>
+                            <div class="legend-item"><div class="legend-dot legend-preselect"></div>预选课程</div>
+                        </div>
+                    </div>
+                    <div class="schedule-grid" id="scheduleGrid"></div>
                 </div>
-                <div class="course-list" id="courseList"></div>
             </div>
         </div>
     </div>
@@ -282,74 +445,105 @@
         let publicCourses = [];
         let processedCourses = [];
         let favorites = JSON.parse(localStorage.getItem('hust_favorites') || '[]');
+        let preselected = JSON.parse(localStorage.getItem('hust_preselected') || '{}');
         let currentSort = 'default';
         let useBuiltinCourses = true;
 
         const PERIOD_TIMES = {
-            1: { start: 480, end: 580 },
-            2: { start: 480, end: 580 },
-            3: { start: 610, end: 710 },
-            4: { start: 610, end: 710 },
-            5: { start: 840, end: 935 },
-            6: { start: 840, end: 935 },
-            7: { start: 955, end: 1050 },
-            8: { start: 955, end: 1050 },
-            9: { start: 1110, end: 1205 },
-            10: { start: 1110, end: 1205 },
-            11: { start: 1110, end: 1260 },
-            12: { start: 1215, end: 1315 }
+            1: { start: 480, end: 580 }, 2: { start: 480, end: 580 },
+            3: { start: 610, end: 710 }, 4: { start: 610, end: 710 },
+            5: { start: 840, end: 935 }, 6: { start: 840, end: 935 },
+            7: { start: 955, end: 1050 }, 8: { start: 955, end: 1050 },
+            9: { start: 1110, end: 1205 }, 10: { start: 1110, end: 1205 },
+            11: { start: 1110, end: 1260 }, 12: { start: 1215, end: 1315 }
         };
 
         const WEEKDAYS = { '日': 0, '一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6 };
+        const WEEKDAY_NAMES = ['日', '一', '二', '三', '四', '五', '六'];
+
+        function initScheduleGrid() {
+            var grid = document.getElementById('scheduleGrid');
+            var html = '';
+            html += '<div class="schedule-cell header"></div>';
+            for (var d = 1; d <= 7; d++) {
+                html += '<div class="schedule-cell header">周' + WEEKDAY_NAMES[d % 7] + '</div>';
+            }
+            for (var p = 0; p < 6; p++) {
+                var period = p * 2 + 1;
+                html += '<div class="schedule-cell time-header">第' + period + '-' + (period + 1) + '节</div>';
+                for (var d = 1; d <= 7; d++) {
+                    html += '<div class="schedule-cell" data-day="' + (d % 7) + '" data-period="' + period + '"></div>';
+                }
+            }
+            grid.innerHTML = html;
+        }
+
+        function renderSchedule() {
+            var cells = document.querySelectorAll('.schedule-cell[data-day]');
+            for (var i = 0; i < cells.length; i++) cells[i].innerHTML = '';
+            
+            var courseMap = {};
+            for (var i = 0; i < userSchedule.length; i++) {
+                var course = userSchedule[i];
+                if (course.periods.length === 0) continue;
+                var key = course.weekday + '_' + course.periods[0];
+                if (!courseMap[key]) courseMap[key] = course;
+            }
+            
+            for (var key in courseMap) {
+                var course = courseMap[key];
+                var cell = document.querySelector('.schedule-cell[data-day="' + course.weekday + '"][data-period="' + course.periods[0] + '"]');
+                if (cell) {
+                    cell.innerHTML = '<div class="course-block original">' +
+                        '<div class="block-name">' + course.name + '</div></div>';
+                }
+            }
+            
+            for (var slotKey in preselected) {
+                var pc = preselected[slotKey];
+                var parts = slotKey.split('_');
+                var day = parseInt(parts[0]), period = parseInt(parts[1]);
+                var cell = document.querySelector('.schedule-cell[data-day="' + day + '"][data-period="' + period + '"]');
+                if (cell) {
+                    cell.innerHTML = '<div class="course-block preselect" onclick="removePreselect(\'' + slotKey + '\')">' +
+                        '<div class="block-name">' + pc.name + '</div></div>';
+                }
+            }
+        }
+
+        function removePreselect(slotKey) {
+            delete preselected[slotKey];
+            localStorage.setItem('hust_preselected', JSON.stringify(preselected));
+            updatePreselectedStatus();
+            renderSchedule();
+            renderCourses();
+        }
 
         document.getElementById('toggleUpload').addEventListener('click', function() {
-            const el = document.getElementById('optionalUpload');
+            var el = document.getElementById('optionalUpload');
             el.classList.toggle('show');
             this.textContent = el.classList.contains('show') ? '收起' : '上传自定义名单';
         });
 
-        const icsUpload = document.getElementById('icsUpload');
-        const xlsxUpload = document.getElementById('xlsxUpload');
-        const icsInput = document.getElementById('icsInput');
-        const xlsxInput = document.getElementById('xlsxInput');
-        const startFilterBtn = document.getElementById('startFilter');
+        var icsUpload = document.getElementById('icsUpload');
+        var xlsxUpload = document.getElementById('xlsxUpload');
+        var icsInput = document.getElementById('icsInput');
+        var xlsxInput = document.getElementById('xlsxInput');
+        var startFilterBtn = document.getElementById('startFilter');
 
         icsUpload.addEventListener('click', function() { icsInput.click(); });
         xlsxUpload.addEventListener('click', function() { xlsxInput.click(); });
 
-        [icsUpload, xlsxUpload].forEach(function(box) {
-            box.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                box.style.borderColor = '#667eea';
-            });
-            box.addEventListener('dragleave', function() {
-                box.style.borderColor = '#ddd';
-            });
-            box.addEventListener('drop', function(e) {
-                e.preventDefault();
-                box.style.borderColor = '#ddd';
-                var file = e.dataTransfer.files[0];
-                if (box === icsUpload && file.name.endsWith('.ics')) {
-                    handleICSFile(file);
-                } else if (box === xlsxUpload && file.name.match(/\.xlsx?$/)) {
-                    handleXLSXFile(file);
-                }
-            });
-        });
-
-        icsInput.addEventListener('change', function(e) {
-            if (e.target.files[0]) handleICSFile(e.target.files[0]);
-        });
-        xlsxInput.addEventListener('change', function(e) {
-            if (e.target.files[0]) handleXLSXFile(e.target.files[0]);
-        });
+        icsInput.addEventListener('change', function(e) { if (e.target.files[0]) handleICSFile(e.target.files[0]); });
+        xlsxInput.addEventListener('change', function(e) { if (e.target.files[0]) handleXLSXFile(e.target.files[0]); });
 
         function handleICSFile(file) {
             var reader = new FileReader();
             reader.onload = function(e) {
                 userSchedule = parseICS(e.target.result);
                 icsUpload.classList.add('active');
-                icsUpload.querySelector('.hint').textContent = '已加载 ' + userSchedule.length + ' 节课程';
+                icsUpload.querySelector('.hint').textContent = '已加载 ' + userSchedule.length + ' 节课';
+                renderSchedule();
                 checkReady();
             };
             reader.readAsText(file);
@@ -364,17 +558,15 @@
                 publicCourses = parseXLSX(sheet);
                 useBuiltinCourses = false;
                 xlsxUpload.classList.add('active');
-                xlsxUpload.querySelector('.hint').textContent = '已加载 ' + publicCourses.length + ' 门公选课';
-                document.querySelector('.builtin-info strong').textContent = '已加载自定义名单';
+                xlsxUpload.querySelector('.label').textContent = '已加载 ' + publicCourses.length + ' 门课';
+                document.querySelector('.builtin-badge').innerHTML = '✅ 已加载自定义名单';
                 checkReady();
             };
             reader.readAsArrayBuffer(file);
         }
 
         function checkReady() {
-            var hasSchedule = userSchedule.length > 0;
-            var hasCourses = useBuiltinCourses || publicCourses.length > 0;
-            startFilterBtn.disabled = !(hasSchedule && hasCourses);
+            startFilterBtn.disabled = !(userSchedule.length > 0 && (useBuiltinCourses || publicCourses.length > 0));
         }
 
         function parseICS(icsContent) {
@@ -386,134 +578,49 @@
                 var dtstartMatch = event.match(/DTSTART[^:]*:(\d{8})T(\d{6})/);
                 var dtendMatch = event.match(/DTEND[^:]*:(\d{8})T(\d{6})/);
                 var descMatch = event.match(/DESCRIPTION:(.+)/);
+                var locationMatch = event.match(/LOCATION:(.+)/);
                 var rruleMatch = event.match(/RRULE:(.+)/);
 
                 if (!summaryMatch || !dtstartMatch) continue;
-
-                var startDate = dtstartMatch[1];
-                var startTime = dtstartMatch[2];
-                var endTime = dtendMatch ? dtendMatch[2] : null;
-
-                var date = new Date(
-                    parseInt(startDate.substring(0, 4)),
-                    parseInt(startDate.substring(4, 6)) - 1,
-                    parseInt(startDate.substring(6, 8))
-                );
+                var startDate = dtstartMatch[1], startTime = dtstartMatch[2], endTime = dtendMatch ? dtendMatch[2] : null;
+                var date = new Date(parseInt(startDate.substring(0, 4)), parseInt(startDate.substring(4, 6)) - 1, parseInt(startDate.substring(6, 8)));
                 var weekday = date.getDay();
 
                 var periods = [];
                 if (descMatch) {
                     var periodMatch = descMatch[1].match(/第(\d+)\s*[-~]\s*(\d+)节/);
-                    if (periodMatch) {
-                        var startP = parseInt(periodMatch[1]);
-                        var endP = parseInt(periodMatch[2]);
-                        for (var p = startP; p <= endP; p++) periods.push(p);
-                    }
+                    if (periodMatch) { var startP = parseInt(periodMatch[1]), endP = parseInt(periodMatch[2]); for (var p = startP; p <= endP; p++) periods.push(p); }
                 }
-
-                var weeks = [];
-                if (rruleMatch) {
-                    var untilMatch = rruleMatch[1].match(/UNTIL=(\d{8})/);
-                    if (untilMatch) {
-                        var endDate = new Date(
-                            parseInt(untilMatch[1].substring(0, 4)),
-                            parseInt(untilMatch[1].substring(4, 6)) - 1,
-                            parseInt(untilMatch[1].substring(6, 8))
-                        );
-                        var weekDiff = Math.ceil((endDate - date) / (7 * 24 * 60 * 60 * 1000));
-                        var startWeek = getWeekNumber(date);
-                        for (var w = startWeek; w <= startWeek + weekDiff; w++) weeks.push(w);
-                    }
-                }
-
-                courses.push({
-                    name: summaryMatch[1].trim(),
-                    weekday: weekday,
-                    periods: periods,
-                    weeks: weeks,
-                    startTime: parseTime(startTime),
-                    endTime: endTime ? parseTime(endTime) : null
-                });
+                var location = locationMatch ? locationMatch[1].trim() : '';
+                courses.push({ name: summaryMatch[1].trim(), weekday: weekday, periods: periods, location: location });
             }
             return courses;
         }
 
-        function parseTime(timeStr) {
-            return {
-                hour: parseInt(timeStr.substring(0, 2)),
-                minute: parseInt(timeStr.substring(2, 4))
-            };
-        }
-
-        function getWeekNumber(date) {
-            var semesterStart = new Date(date.getFullYear(), 1, 17);
-            var diff = date - semesterStart;
-            return Math.ceil(diff / (7 * 24 * 60 * 60 * 1000)) + 1;
-        }
-
         function parseXLSX(sheet) {
             var json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-            var courses = [];
-            var currentCourse = null;
-
+            var courses = [], currentCourse = null;
             for (var i = 2; i < json.length; i++) {
                 var row = json[i];
                 if (!row || !row[0]) continue;
-
                 var timeSlots = parseTimeSlots(row[13], row[14], row[15]);
-
                 if (row[1]) {
-                    currentCourse = {
-                        category: row[0],
-                        seq: row[1],
-                        code: row[2],
-                        name: row[3] ? String(row[3]).replace(/\n/g, ' ') : '',
-                        hours: row[4],
-                        credits: row[5],
-                        target: row[6],
-                        capacity: row[7],
-                        dept: row[8],
-                        teacher: row[9],
-                        location: row[16],
-                        note: row[17],
-                        timeSlots: timeSlots
-                    };
+                    currentCourse = { category: row[0], seq: row[1], code: row[2], name: row[3] ? String(row[3]).replace(/\n/g, ' ') : '', hours: row[4], credits: row[5], target: row[6], capacity: row[7], dept: row[8], teacher: row[9], location: row[16], note: row[17], timeSlots: timeSlots };
                     courses.push(currentCourse);
-                } else if (currentCourse) {
-                    currentCourse.timeSlots.push.apply(currentCourse.timeSlots, timeSlots);
-                }
+                } else if (currentCourse) { currentCourse.timeSlots.push.apply(currentCourse.timeSlots, timeSlots); }
             }
             return courses;
         }
 
         function parseBuiltinCourses() {
-            var courses = [];
-            var currentCourse = null;
-
+            var courses = [], currentCourse = null;
             for (var i = 0; i < BUILTIN_COURSES.length; i++) {
                 var item = BUILTIN_COURSES[i];
                 var timeSlots = parseTimeSlots(item.weekStr, item.weekdayStr, item.periodStr);
-
                 if (item.seq) {
-                    currentCourse = {
-                        category: item.category,
-                        seq: item.seq,
-                        code: item.code,
-                        name: item.name ? String(item.name).replace(/\n/g, ' ') : '',
-                        hours: item.hours,
-                        credits: item.credits,
-                        target: item.target,
-                        capacity: item.capacity,
-                        dept: item.dept,
-                        teacher: item.teacher,
-                        location: item.location,
-                        note: item.note,
-                        timeSlots: timeSlots
-                    };
+                    currentCourse = { category: item.category, seq: item.seq, code: item.code, name: item.name ? String(item.name).replace(/\n/g, ' ') : '', hours: item.hours, credits: item.credits, target: item.target, capacity: item.capacity, dept: item.dept, teacher: item.teacher, location: item.location, note: item.note, timeSlots: timeSlots };
                     courses.push(currentCourse);
-                } else if (currentCourse) {
-                    currentCourse.timeSlots.push.apply(currentCourse.timeSlots, timeSlots);
-                }
+                } else if (currentCourse) { currentCourse.timeSlots.push.apply(currentCourse.timeSlots, timeSlots); }
             }
             return courses;
         }
@@ -521,240 +628,128 @@
         function parseTimeSlots(weekStr, weekdayStr, periodStr) {
             var slots = [];
             if (!weekdayStr || !periodStr) return slots;
-
             var weekday = -1;
-            for (var key in WEEKDAYS) {
-                if (weekdayStr.indexOf(key) !== -1) {
-                    weekday = WEEKDAYS[key];
-                    break;
-                }
-            }
+            for (var key in WEEKDAYS) { if (weekdayStr.indexOf(key) !== -1) { weekday = WEEKDAYS[key]; break; } }
             if (weekday === -1) return slots;
-
-            var weeks = [];
-            if (weekStr) {
-                var weekStrVal = String(weekStr);
-                if (weekStrVal.indexOf('-') !== -1) {
-                    var parts = weekStrVal.split('-');
-                    var startW = parseInt(parts[0].trim());
-                    var endW = parseInt(parts[1].trim());
-                    if (!isNaN(startW) && !isNaN(endW)) {
-                        for (var w = startW; w <= endW; w++) weeks.push(w);
-                    }
-                } else {
-                    var w = parseInt(weekStrVal);
-                    if (!isNaN(w)) weeks.push(w);
-                }
-            }
-
             var periods = [];
             var periodStrVal = String(periodStr);
-
             if (periodStrVal.indexOf(':') !== -1) {
                 var timeMatch = periodStrVal.match(/(\d+):(\d+)\s*[-~]\s*(\d+):(\d+)/);
-                if (timeMatch) {
-                    slots.push({
-                        weekday: weekday,
-                        weeks: weeks,
-                        periods: [],
-                        startTime: parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]),
-                        endTime: parseInt(timeMatch[3]) * 60 + parseInt(timeMatch[4]),
-                        raw: periodStrVal
-                    });
-                    return slots;
-                }
+                if (timeMatch) { slots.push({ weekday: weekday, weeks: [], periods: [], startTime: parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]), endTime: parseInt(timeMatch[3]) * 60 + parseInt(timeMatch[4]), raw: periodStrVal }); return slots; }
             }
-
             if (periodStrVal.indexOf('-') !== -1) {
                 var match = periodStrVal.match(/(\d+)\s*[-~]\s*(\d+)/);
-                if (match) {
-                    var startP = parseInt(match[1]);
-                    var endP = parseInt(match[2]);
-                    for (var p = startP; p <= endP; p++) periods.push(p);
-                }
-            } else {
-                var p = parseInt(periodStrVal);
-                if (!isNaN(p)) periods.push(p);
-            }
-
-            if (periods.length > 0) {
-                slots.push({
-                    weekday: weekday,
-                    weeks: weeks,
-                    periods: periods,
-                    startTime: null,
-                    endTime: null
-                });
-            }
+                if (match) { var startP = parseInt(match[1]), endP = parseInt(match[2]); for (var p = startP; p <= endP; p++) periods.push(p); }
+            } else { var p = parseInt(periodStrVal); if (!isNaN(p)) periods.push(p); }
+            if (periods.length > 0) slots.push({ weekday: weekday, weeks: [], periods: periods, startTime: null, endTime: null });
             return slots;
         }
 
         function detectConflicts() {
-            if (useBuiltinCourses && publicCourses.length === 0) {
-                publicCourses = parseBuiltinCourses();
-            }
-
+            if (useBuiltinCourses && publicCourses.length === 0) publicCourses = parseBuiltinCourses();
             processedCourses = [];
             for (var i = 0; i < publicCourses.length; i++) {
                 var course = publicCourses[i];
                 var conflicts = [];
-                var conflictDetails = [];
-
                 for (var j = 0; j < course.timeSlots.length; j++) {
                     var slot = course.timeSlots[j];
                     for (var k = 0; k < userSchedule.length; k++) {
                         var userCourse = userSchedule[k];
                         if (slot.weekday !== userCourse.weekday) continue;
-
-                        var weekOverlap = slot.weeks.length === 0 ||
-                            userCourse.weeks.length === 0 ||
-                            (function() {
-                                for (var w = 0; w < slot.weeks.length; w++) {
-                                    if (userCourse.weeks.indexOf(slot.weeks[w]) !== -1) return true;
-                                }
-                                return false;
-                            })();
-                        if (!weekOverlap) continue;
-
-                        var timeConflict = false;
-
-                        if (slot.periods.length > 0 && userCourse.periods.length > 0) {
-                            for (var p = 0; p < slot.periods.length; p++) {
-                                if (userCourse.periods.indexOf(slot.periods[p]) !== -1) {
-                                    timeConflict = true;
-                                    break;
-                                }
-                            }
-                        } else if (slot.startTime !== null && userCourse.startTime) {
-                            var slotStart = slot.startTime;
-                            var slotEnd = slot.endTime;
-                            var userStart = userCourse.startTime.hour * 60 + userCourse.startTime.minute;
-                            var userEnd = userCourse.endTime ?
-                                userCourse.endTime.hour * 60 + userCourse.endTime.minute :
-                                userStart + 100;
-                            timeConflict = !(slotEnd <= userStart || slotStart >= userEnd);
-                        } else if (slot.periods.length > 0 && userCourse.periods.length === 0 && userCourse.startTime) {
-                            var userStart = userCourse.startTime.hour * 60 + userCourse.startTime.minute;
-                            var userEnd = userCourse.endTime ?
-                                userCourse.endTime.hour * 60 + userCourse.endTime.minute :
-                                userStart + 100;
-                            for (var p = 0; p < slot.periods.length; p++) {
-                                var pt = PERIOD_TIMES[slot.periods[p]];
-                                if (pt && !(pt.end <= userStart || pt.start >= userEnd)) {
-                                    timeConflict = true;
-                                    break;
-                                }
-                            }
-                        }
-
-                        if (timeConflict) {
-                            if (conflicts.indexOf(userCourse.name) === -1) conflicts.push(userCourse.name);
-                            conflictDetails.push({
-                                course: userCourse.name,
-                                weekday: slot.weekday,
-                                periods: slot.periods.length > 0 ? slot.periods : slot.raw
-                            });
-                        }
+                        if (slot.periods.length === 0 || userCourse.periods.length === 0) continue;
+                        var hasOverlap = false;
+                        for (var p = 0; p < slot.periods.length; p++) { if (userCourse.periods.indexOf(slot.periods[p]) !== -1) { hasOverlap = true; break; } }
+                        if (hasOverlap && conflicts.indexOf(userCourse.name) === -1) conflicts.push(userCourse.name);
                     }
                 }
-
-                var courseId = (course.code || '') + '_' + (course.seq || '');
+                var courseId = (course.code || '') + '_' + (course.seq || i);
+                var preselectConflict = false, preselectKeys = [];
+                for (var j = 0; j < course.timeSlots.length; j++) {
+                    var slot = course.timeSlots[j];
+                    if (slot.periods.length > 0) { var key = slot.weekday + '_' + slot.periods[0]; preselectKeys.push(key); if (preselected[key]) preselectConflict = true; }
+                }
                 processedCourses.push({
-                    category: course.category,
-                    seq: course.seq,
-                    code: course.code,
-                    name: course.name,
-                    hours: course.hours,
-                    credits: course.credits,
-                    target: course.target,
-                    capacity: course.capacity,
-                    dept: course.dept,
-                    teacher: course.teacher,
-                    location: course.location,
-                    note: course.note,
-                    timeSlots: course.timeSlots,
-                    isConflict: conflicts.length > 0,
-                    conflictWith: conflicts,
-                    conflictDetails: conflictDetails,
-                    isFavorite: favorites.indexOf(courseId) !== -1
+                    category: course.category, seq: course.seq, code: course.code, name: course.name, hours: course.hours, credits: course.credits,
+                    teacher: course.teacher, location: course.location, timeSlots: course.timeSlots,
+                    isConflict: conflicts.length > 0, conflictWith: conflicts,
+                    isFavorite: favorites.indexOf(courseId) !== -1, isPreselected: false,
+                    preselectKeys: preselectKeys, preselectConflict: preselectConflict || conflicts.length > 0
                 });
             }
+            updatePreselectedStatus();
             return processedCourses;
+        }
+
+        function updatePreselectedStatus() {
+            for (var i = 0; i < processedCourses.length; i++) {
+                var c = processedCourses[i];
+                c.isPreselected = false;
+                for (var j = 0; j < c.preselectKeys.length; j++) {
+                    if (preselected[c.preselectKeys[j]]) {
+                        var pc = preselected[c.preselectKeys[j]];
+                        if (pc.courseId === ((c.code || '') + '_' + (c.seq || i))) { c.isPreselected = true; break; }
+                    }
+                }
+            }
         }
 
         function renderCourses() {
             var categoryFilter = document.getElementById('categoryFilter').value;
             var campusFilter = document.getElementById('campusFilter').value;
             var viewFilter = document.getElementById('viewFilter').value;
-
             var filtered = [];
             for (var i = 0; i < processedCourses.length; i++) {
-                var course = processedCourses[i];
-                if (categoryFilter && course.category !== categoryFilter) continue;
-                if (campusFilter && course.location && course.location.indexOf(campusFilter) === -1) continue;
-                if (viewFilter === 'available' && course.isConflict) continue;
-                if (viewFilter === 'conflict' && !course.isConflict) continue;
-                if (viewFilter === 'favorite' && !course.isFavorite) continue;
-                filtered.push(course);
+                var c = processedCourses[i];
+                if (categoryFilter && c.category !== categoryFilter) continue;
+                if (campusFilter && c.location && c.location.indexOf(campusFilter) === -1) continue;
+                if (viewFilter === 'available' && c.isConflict) continue;
+                if (viewFilter === 'conflict' && !c.isConflict) continue;
+                if (viewFilter === 'preselected' && !c.isPreselected) continue;
+                filtered.push(c);
             }
-
-            if (currentSort === 'credit') {
-                filtered.sort(function(a, b) {
-                    return (parseFloat(b.credits) || 0) - (parseFloat(a.credits) || 0);
-                });
-            } else if (currentSort === 'name') {
-                filtered.sort(function(a, b) {
-                    return (a.name || '').localeCompare(b.name || '');
-                });
-            }
+            if (currentSort === 'credit') filtered.sort(function(a, b) { return (parseFloat(b.credits) || 0) - (parseFloat(a.credits) || 0); });
+            else if (currentSort === 'name') filtered.sort(function(a, b) { return (a.name || '').localeCompare(b.name || ''); });
 
             var courseList = document.getElementById('courseList');
-            if (filtered.length === 0) {
-                courseList.innerHTML = '<div class="empty-state"><div class="icon">📭</div><p>没有找到符合条件的课程</p></div>';
-                return;
-            }
+            if (filtered.length === 0) { courseList.innerHTML = '<div class="empty-state"><div class="icon">📭</div><p>没有找到符合条件的课程</p></div>'; return; }
 
             var html = '';
-            var weekdayNames = ['日', '一', '二', '三', '四', '五', '六'];
             for (var i = 0; i < filtered.length; i++) {
-                var course = filtered[i];
-                var timeDisplays = [];
-                for (var j = 0; j < course.timeSlots.length; j++) {
-                    var slot = course.timeSlots[j];
-                    var wd = weekdayNames[slot.weekday];
-                    if (slot.periods.length > 0) {
-                        timeDisplays.push('周' + wd + ' 第' + slot.periods[0] + '-' + slot.periods[slot.periods.length - 1] + '节');
-                    } else if (slot.raw) {
-                        timeDisplays.push('周' + wd + ' ' + slot.raw);
-                    } else {
-                        timeDisplays.push('周' + wd);
-                    }
-                }
-                var timeDisplay = timeDisplays.join('<br>');
-                var conflictInfo = course.isConflict ?
-                    '<div style="color: #f44336; font-size: 0.85rem; margin-top: 6px;">⚠️ 与「' + course.conflictWith.join('、') + '」冲突</div>' : '';
-                var statusColor = course.isConflict ? '#f44336' : '#4CAF50';
-                var statusText = course.isConflict ? '冲突' : '可选';
-                var starClass = course.isFavorite ? 'active' : '';
-                var starIcon = course.isFavorite ? '⭐' : '☆';
-                var courseId = (course.code || '') + '_' + (course.seq || '');
+                var c = filtered[i];
+                var idx = processedCourses.indexOf(c);
+                var courseId = (c.code || '') + '_' + (c.seq || idx);
 
-                html += '<div class="course-card">' +
-                    '<button class="favorite-btn ' + starClass + '" onclick="toggleFavorite(\'' + courseId + '\')">' + starIcon + '</button>' +
+                var timeDisplays = [];
+                for (var j = 0; j < c.timeSlots.length; j++) {
+                    var slot = c.timeSlots[j];
+                    var wd = WEEKDAY_NAMES[slot.weekday];
+                    if (slot.periods.length > 0) timeDisplays.push('周' + wd + ' 第' + slot.periods[0] + '-' + slot.periods[slot.periods.length-1] + '节');
+                    else if (slot.raw) timeDisplays.push('周' + wd + ' ' + slot.raw);
+                }
+
+                var cardClass = 'course-card';
+                if (c.isPreselected) cardClass += ' preselected';
+                else if (c.isConflict) cardClass += ' conflict';
+
+                var statusClass = c.isConflict ? 'status-conflict' : (c.isPreselected ? 'status-preselected' : 'status-available');
+                var statusText = c.isConflict ? '冲突' : (c.isPreselected ? '已预选' : '可选');
+                var conflictInfo = c.isConflict ? '<div class="conflict-info">⚠️ 与「' + c.conflictWith.join('、') + '」冲突</div>' : '';
+
+                html += '<div class="' + cardClass + '">' +
                     '<div class="course-info">' +
-                    '<div class="name">' + (course.name || '') + '</div>' +
-                    '<div class="meta">' +
-                    '<span class="tag">' + (course.category || '') + '</span>' +
-                    '<span>' + (course.credits || '') + '学分</span>' +
-                    '<span>' + (course.teacher || '') + '</span>' +
-                    '<span>' + (course.location || '') + '</span>' +
+                        '<div class="name">' + (c.name || '') + '</div>' +
+                        '<div class="meta"><span class="tag">' + (c.category || '') + '</span><span>' + (c.credits || '') + '学分</span><span>' + (c.teacher || '') + '</span></div>' +
+                        '<div class="time-info">' + timeDisplays.join('、') + '</div>' +
+                        conflictInfo +
                     '</div>' +
-                    '<div class="time-info">' + timeDisplay + '</div>' +
-                    conflictInfo +
+                    '<div class="course-right">' +
+                        '<div class="course-actions">' +
+                            '<button class="icon-btn favorite-btn' + (c.isFavorite ? ' active' : '') + '" onclick="toggleFavorite(\'' + courseId + '\', ' + idx + ')">' + (c.isFavorite ? '已收藏' : '收藏') + '</button>' +
+                            '<button class="icon-btn preselect-btn' + (c.isPreselected ? ' active' : '') + '" ' + (c.preselectConflict && !c.isPreselected ? 'disabled' : '') + ' onclick="togglePreselect(' + idx + ')">' + (c.isPreselected ? '取消预选' : '预选') + '</button>' +
+                        '</div>' +
+                        '<div class="status-badge ' + statusClass + '">' + statusText + '</div>' +
                     '</div>' +
-                    '<div style="text-align: right; min-width: 60px;">' +
-                    '<span style="font-size: 0.8rem; color: ' + statusColor + ';">' + statusText + '</span>' +
-                    '</div></div>';
+                '</div>';
             }
             courseList.innerHTML = html;
             updateStats();
@@ -762,46 +757,62 @@
 
         function updateStats() {
             document.getElementById('totalCount').textContent = processedCourses.length;
-            var available = 0, conflict = 0, fav = 0;
+            var available = 0, conflict = 0, presel = 0;
             for (var i = 0; i < processedCourses.length; i++) {
-                if (!processedCourses[i].isConflict) available++;
-                if (processedCourses[i].isConflict) conflict++;
-                if (processedCourses[i].isFavorite) fav++;
+                if (!processedCourses[i].isConflict) available++; else conflict++;
+                if (processedCourses[i].isPreselected) presel++;
             }
             document.getElementById('availableCount').textContent = available;
             document.getElementById('conflictCount').textContent = conflict;
-            document.getElementById('favoriteCount').textContent = fav;
+            document.getElementById('preselectCount').textContent = presel;
         }
 
-        function toggleFavorite(id) {
+        function toggleFavorite(id, idx) {
             var index = favorites.indexOf(id);
-            if (index > -1) {
-                favorites.splice(index, 1);
-            } else {
-                favorites.push(id);
-            }
+            if (index > -1) favorites.splice(index, 1); else favorites.push(id);
             localStorage.setItem('hust_favorites', JSON.stringify(favorites));
-            for (var i = 0; i < processedCourses.length; i++) {
-                var courseId = (processedCourses[i].code || '') + '_' + (processedCourses[i].seq || '');
-                processedCourses[i].isFavorite = favorites.indexOf(courseId) !== -1;
-            }
+            processedCourses[idx].isFavorite = favorites.indexOf(id) !== -1;
             renderCourses();
+        }
+
+        function togglePreselect(idx) {
+            var c = processedCourses[idx];
+            var courseId = (c.code || '') + '_' + (c.seq || idx);
+            if (c.isPreselected) {
+                for (var j = 0; j < c.preselectKeys.length; j++) {
+                    var key = c.preselectKeys[j];
+                    if (preselected[key] && preselected[key].courseId === courseId) delete preselected[key];
+                }
+            } else {
+                for (var j = 0; j < c.preselectKeys.length; j++) {
+                    var key = c.preselectKeys[j];
+                    if (preselected[key]) {
+                        var oldId = preselected[key].courseId;
+                        for (var k = 0; k < processedCourses.length; k++) {
+                            if ((processedCourses[k].code || '') + '_' + (processedCourses[k].seq || k) === oldId) processedCourses[k].isPreselected = false;
+                        }
+                    }
+                    preselected[key] = { courseId: courseId, name: c.name, location: c.location };
+                }
+            }
+            localStorage.setItem('hust_preselected', JSON.stringify(preselected));
+            updatePreselectedStatus();
+            renderCourses();
+            renderSchedule();
         }
 
         function initFilters() {
             var categories = [];
             for (var i = 0; i < processedCourses.length; i++) {
-                if (processedCourses[i].category && categories.indexOf(processedCourses[i].category) === -1) {
-                    categories.push(processedCourses[i].category);
-                }
+                if (processedCourses[i].category && categories.indexOf(processedCourses[i].category) === -1) categories.push(processedCourses[i].category);
             }
             categories.sort();
             var html = '<option value="">全部</option>';
-            for (var i = 0; i < categories.length; i++) {
-                html += '<option value="' + categories[i] + '">' + categories[i] + '</option>';
-            }
+            for (var i = 0; i < categories.length; i++) html += '<option value="' + categories[i] + '">' + categories[i] + '</option>';
             document.getElementById('categoryFilter').innerHTML = html;
         }
+
+        initScheduleGrid();
 
         startFilterBtn.addEventListener('click', function() {
             detectConflicts();
@@ -824,6 +835,42 @@
                 renderCourses();
             });
         }
+    </script>
+
+    <!-- 教程模态框 -->
+    <div class="modal-overlay" id="tutorialModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeTutorial">&times;</span>
+            <div class="modal-title">如何获取 ICS 课表文件</div>
+            <div class="tutorial-steps">
+                <p><strong>方法一：从 WakeUp 课程表 APP 导出</strong></p>
+                <p>1. 打开 WakeUp 课程表 APP</p>
+                <p>2. 进入「设置」→「导出课表」</p>
+                <p>3. 选择「导出为 ICS 格式」</p>
+                <p>4. 保存文件并上传到本工具</p>
+                <br>
+                <p><strong>方法二：从学校教务系统</strong></p>
+                <p>登录教务系统，查看是否有课表导出功能</p>
+                <br>
+                <hr style="border: none; border-top: 1px solid #eee; margin: 15px 0;">
+                <p style="color: #888; font-size: 0.85rem;">图片教程：</p>
+                <!-- 在这里放入你的教程图片 -->
+                <img src="tutorial.png" alt="获取ICS教程" style="display: block; margin-top: 10px;">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 教程模态框事件
+        document.getElementById('showTutorial').addEventListener('click', function() {
+            document.getElementById('tutorialModal').classList.add('show');
+        });
+        document.getElementById('closeTutorial').addEventListener('click', function() {
+            document.getElementById('tutorialModal').classList.remove('show');
+        });
+        document.getElementById('tutorialModal').addEventListener('click', function(e) {
+            if (e.target === this) this.classList.remove('show');
+        });
     </script>
 </body>
 </html>
